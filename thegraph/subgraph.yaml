@@ -1,0 +1,33 @@
+###
+### Manifest File
+###
+### The manifest is our configuration file and defines:
+### - which smart contracts to index (address, network, ABI...)
+### - which events to listen to
+### - other things to listen to like function calls or blocks
+### - the mapping functions being called (see mapping.ts below)
+###
+
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Game
+    network: goerli
+    source:
+      address: "0x5284473C2246310D278ce58660210b4890F16f47"
+      abi: Game
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - BetPlaced
+      abis:
+        - name: Game
+          file: ./abis/Game.json
+      eventHandlers:
+        - event: BetPlaced(address,uint256,bool)
+          handler: handleBetPlaced
+      file: ./src/game.ts
