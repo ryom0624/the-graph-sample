@@ -9,5 +9,9 @@ typechain-types
 cache
 artifacts
 
+build
+generated
+abis
+
 /deployments/localhost/*
 !/deployments/localhost/.chainId

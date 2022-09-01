@@ -8,6 +8,9 @@ import networks from "./networks";
 import dotenv from "dotenv";
 dotenv.config();
 
+import "./tasks/game";
+import "./tasks/balance";
+
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
   // etherscan: {
@@ -19,7 +22,7 @@ const config: HardhatUserConfig = {
   },
   networks,
   namedAccounts: {
-    deployer: 0
+    deployer: 0,
   },
   solidity: {
     version: "0.8.9",
